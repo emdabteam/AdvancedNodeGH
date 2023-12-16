@@ -5,7 +5,8 @@ const userFacotry = require('../factories/userFactory');
 class CustomPage {
   static async build() {
     const browser = await puppeteer.launch({
-      headless: false
+      headless: true,
+      args: ['--no-sandbox']
     });
 
     const page = await browser.newPage();
@@ -36,7 +37,7 @@ class CustomPage {
         });
         break;
       } catch(err) {
-        await this.page.goto('localhost:3000/blogs');
+        await this.page.goto('http://localhost:3000/blogs');
         await this.page.reload();
         continue;
       }
@@ -55,7 +56,7 @@ class CustomPage {
         });
         break;
       } catch(err) {
-        await this.page.goto('localhost:3000/blogs');
+        await this.page.goto('http://localhost:3000/blogs');
         await this.page.reload();
         continue;
       }
@@ -80,7 +81,7 @@ class CustomPage {
         });
         break;
       } catch(err) {
-        await this.page.goto('localhost:3000/blogs');
+        await this.page.goto('http://localhost:3000/blogs');
         await this.page.reload();
         continue;
       }
